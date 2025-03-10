@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/sahanav123/crossbrowsingusingdocker.git' // Change this to your Git repository
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Publish Reports') {
+            steps {
+                cucumber buildStatus: false, reportsDirectory: 'target/cucumber-reports'
+            }
+        }
+    }
+}
