@@ -16,7 +16,9 @@ pipeline {
 
         stage('Run Tests') {
             steps {
+                echo "Starting test execution..."
                 sh 'mvn test'
+                echo "Test execution completed."
             }
         }
 
@@ -27,3 +29,5 @@ pipeline {
         }
     }
 }
+
+
