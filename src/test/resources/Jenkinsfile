@@ -24,7 +24,7 @@ pipeline {
 
         stage('Publish Reports') {
             steps {
-                cucumber buildStatus: false, reportsDirectory: 'target/cucumber-reports'
+                cucumber buildStatus: True, reportsDirectory: 'target/cucumber-reports'
             }
         }
     }
